@@ -1,6 +1,7 @@
 class ReviewsController < ApplicationController
 	#public methods
 
+	#please ignore this line, it is only a test
 	#index: usually the first method in the controller
 	#it is here as a tool to show all of the reviews in the Review model
 	#this is the method that shows up when the url '/reviews/' is requested
