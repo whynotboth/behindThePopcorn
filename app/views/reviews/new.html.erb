@@ -1,0 +1,21 @@
+
+<blockquote margin: 10px;>
+<h1>New Movieeee Review.</h1>
+
+
+<%= form_with scope: :review, url: reviews_path, local:true do |form| %>
+	<p>
+		<%= form.label :title %><br>
+		<%= form.text_field :title, :size=> "50x1" %>
+	</p>
+
+	<p>
+		<%= form.label :body %><br>
+		<%= form.text_area :body, :size=>"100x20" %>
+	</p>
+
+	<p>
+		<%= form.submit %>
+	</p>
+</blockquote>
+<% end %>

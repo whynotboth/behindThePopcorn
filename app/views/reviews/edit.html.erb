@@ -1,0 +1,41 @@
+<style>
+	p{
+		margin: 10px;
+	}
+</style>
+<h1 style="margin: 10px">Edit review</h1>
+ 
+<%= form_with(model: @review) do |form| %>
+ 
+  <% if @review.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@review.errors.count, "error") %> prohibited
+        this review from being saved:
+      </h2>
+      <ul>
+        <% @review.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+ 
+  <p>
+    <%= form.label :title %><br>
+    <%= form.text_field :title, :size=>"50x1" %>
+  </p>
+ 
+  <p>
+    <%= form.label :body%><br>
+    <%= form.text_area :body, :size=>"100x20"%>
+  </p>
+ 
+  <p>
+    <%= form.submit %>
+  </p>
+ 
+<% end %>
+ 	<p>
+		<%= link_to 'Back', reviews_path %>
+	</p>

@@ -26,3 +26,28 @@
   </div><!-- /.col-lg-6 -->
 </div><!-- /.row -->
 </ul>
+
+<style>
+  div{
+    padding-top: 0px;
+  }
+</style>
+<br>
+<div class="panel-group" id="accordion">
+  <% @i = 0 %>
+  <% @reviews.each do |review| %>
+  <% @i = @i + 1 %>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href= #collapse<%= @i %>>
+        <strong><%= review.title %></strong></a>
+      </h4>
+    </div>
+    <div id=collapse<%= @i %> class="panel-collapse collapse">
+      <div class="panel-body"><%= review.body.html_safe %></div>
+    </div>
+  </div>
+  <% end %>
+  <% @i = 0 %>
+</div>

@@ -1,0 +1,15 @@
+<style>
+body { 
+    display: block;
+    margin: 10px;
+}
+</style>
+
+<h1><%= @review.title %></h1>
+
+<body>
+	<%= @review.body.html_safe %>
+</body>
+
+<%= link_to 'Edit', edit_review_path(@review) %> | 
+<%= link_to 'Back', reviews_path %>

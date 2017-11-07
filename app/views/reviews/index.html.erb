@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table, th, td, h1 {
+	padding: 10px;
+	}
+</style>
+</head>
+
+<h1>Review Database</h1>
+<table>
+	<tr>
+		<th>
+			Title
+		</th>
+		<th>
+			Options
+			<colspan= "2">		
+		</th>
+	</tr>
+
+	<% @reviews.each do |review| %>
+		<tr>
+			<td><%= review.title %></td>
+			<td><%= link_to 'Show', review_path(review) %></td>
+			<td><%= link_to 'Edit', edit_review_path(review) %></td>
+		</tr>
+	<% end %>
+</table>
