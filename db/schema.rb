@@ -20,12 +20,4 @@ ActiveRecord::Schema.define(version: 20171106222903) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "widgets", id: :serial, force: :cascade do |t|
-    t.string "name"
-    t.text "description"
-    t.integer "stock"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
 end
