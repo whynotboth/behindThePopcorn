@@ -25,6 +25,9 @@ gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
+#Use paperclip to handle images associated with reviews
+gem "paperclip", "~> 5.0.0"
+
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
@@ -37,6 +40,8 @@ gem 'bootstrap-sass', '~> 3.3.7'
 gem 'bootstrap', '~> 4.0.0.beta2.1'
 gem 'autoprefixer-rails'
 gem 'jquery-rails'
+
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

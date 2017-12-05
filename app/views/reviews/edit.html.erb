@@ -30,6 +30,12 @@
     <%= form.label :body%><br>
     <%= form.text_area :body, :size=>"100x20"%>
   </p>
+
+  <div>
+      <%= form.label :image %>
+      <%= form.file_field :image, class: 'form-control' %>
+    </div>
+<br>
  
   <p>
     <%= form.submit %>

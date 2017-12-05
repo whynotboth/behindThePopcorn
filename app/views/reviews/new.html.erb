@@ -4,18 +4,27 @@
 
 
 <%= form_with scope: :review, url: reviews_path, local:true do |form| %>
-	<p>
+	<div>
 		<%= form.label :title %><br>
 		<%= form.text_field :title, :size=> "50x1" %>
-	</p>
+	</div>
 
-	<p>
+	<div>
 		<%= form.label :body %><br>
 		<%= form.text_area :body, :size=>"100x20" %>
-	</p>
-
-	<p>
+	</div>
+	
+	<div>
+    	<%= form.label :image %>
+    	<%= form.file_field :image, class: 'form-control' %>
+  	</div>
+<br>
+	<div>
 		<%= form.submit %>
-	</p>
+	</div>
 </blockquote>
 <% end %>
+
+
+
+

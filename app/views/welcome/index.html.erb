@@ -1,12 +1,49 @@
 <style>
 body{
-	background-color: lightgrey;
+	background-color: black;
 	}
+
+.container {
+  position: relative;
+  width: 80%;
+}
+
+.image {
+  display: block;
+  height: 400;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 400;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: black;
+}
+
+.container:hover .overlay {
+  opacity: 1;
+}
+
+.text {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
+
 </style>
 
 
-<div class="container">
-	<div class="jumbotron">
+<div class="container" align="center">
+	<div class="jumbotron" style="background-color: #cc0000; opacity: .75" >
 		<h1>Behind the Popcorn
 		<img src="/btpLogo.png" height="100"></h1>
 
@@ -14,29 +51,47 @@ body{
 	</div>
 </div>
 
-<div class="container">
-<style>
-  div{
-    padding-top: 0px;
-  }
-</style>
-<br>
-<div class="panel-group" id="accordion">
+<div class="container-fluid" align="center">
+
   <% @i = 0 %>
   <% @reviews.each do |review| %>
   <% @i = @i + 1 %>
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h4 class="panel-title">
-        <a data-toggle="collapse" data-parent="#accordion" href= #collapse<%= @i %>>
-        <strong><%= review.title %></strong></a>
-      </h4>
-    </div>
-    <div id=collapse<%= @i %> class="panel-collapse collapse">
-      <div class="panel-body"><%= review.body.html_safe %></div>
+<!-- Button trigger modal -->
+<div class="container" style="width: 25%; float:left" >
+<button type="button" class="btn" style="background-color:transparent" data-toggle="modal" data-target=#exampleModal<%= @i %>>
+  <div class="container" style="width:100%" id=<%= review.title %>>
+  <img src=<%= review.image.url %> alt=<%=review.title %> height="400" class="image">
+    <div class="overlay">
+    <div class="text" id=<%= review.title %>><%= review.title %></div>
+  </div>
+</div>
+</button>
+</div>
+
+
+<!-- /Button trigger modal -->
+
+<!-- Modal -->
+<div class="modal fade" id=exampleModal<%= @i %> tabindex="-1" role="dialog" aria-labelledby=exampleModalLabel<%= @i %> aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <strong class="modal-title" id=ModalLabel<%= @i %>><%= review.title %></strong>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" align="left">
+        <%= review.body.html_safe %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+      </div>
     </div>
   </div>
+</div>
+<!-- /Modal -->
   <% end %>
   <% @i = 0 %>
-</div>
+
 </div>

@@ -41,7 +41,7 @@ class ReviewsController < ApplicationController
 #private methods
 	private
 		def review_params
-			params.require(:review).permit(:title, :body)
+			params.require(:review).permit(:title, :body, :image)
 		end
 
 end
