@@ -7,6 +7,7 @@ class ReviewsController < ApplicationController
 	#this is the method that shows up when the url '/reviews/' is requested
 	def index
 		@reviews = Review.all
+		@review.order(:title)
 	end
 
 	def show
