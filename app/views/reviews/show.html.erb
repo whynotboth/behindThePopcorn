@@ -3,12 +3,21 @@ body {
     display: block;
     margin: 10px;
 }
+
+p {
+padding-bottom: 15px;
+}
+
+.mymofucka{
+  font-family: 'Raleway', sans-serif;
+  line-height: 1.5;
+}
 </style>
 
 <h1><%= @review.title %></h1>
 
 <body>
-	<%= @review.body.html_safe %>
+	<%= simple_format(@review.body, class:"mymofucka")%>
 </body>
 
 

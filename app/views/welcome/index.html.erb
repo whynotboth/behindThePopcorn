@@ -39,6 +39,28 @@ body{
   -ms-transform: translate(-50%, -50%);
 }
 
+.modal-body {
+  display: block;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 18px;
+  line-height: 1.75;
+  width: 90%;
+
+}
+
+.modal-title {
+  display: block;
+  font-family: 'Anton', sans-serif;
+  font-size: 26px;
+  margin-top: 15;
+}
+
+p{
+  padding: 20;
+}
+
+
+
 </style>
 
 
@@ -76,16 +98,18 @@ body{
   <div class="modal-dialog" role="document" style="width: 80%">
     <div class="modal-content">
       <div class="modal-header">
-        <strong class="modal-title" id=ModalLabel<%= @i %>><%= review.title %></strong>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
+        <button type="button" class="close" style="float: top" data-dismiss="modal" aria-label="Close">
+           <span aria-hidden="true">&times;</span>
         </button>
+        <h1 class="modal-title" id=ModalLabel<%= @i %>><%= review.title %></h1>
       </div>
       <div class="modal-body" align="left">
-        <%= review.body.html_safe %>
+        <%= simple_format review.body %>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-dark" data-dismiss="modal">
+          <img src="/logo_close.png" height="70" align="center">
+        </button>
       </div>
     </div>
   </div>
