@@ -51,8 +51,7 @@ body{
 .modal-title {
   display: block;
   font-family: 'Anton', sans-serif;
-  font-size: 26px;
-  margin-top: 15;
+  font-size: 32px;
 }
 
 .navbar-text{
@@ -61,6 +60,37 @@ body{
   font-family: 'Fjalla One', sans-serif;
   font-size: 32px;
   color: #666666;
+}
+
+.quickdirt-title{
+  font-family: 'Indie Flower', cursive;
+  font-size: 26px;
+  width: 80%;
+  padding-top: 15px;
+  text-align: left;
+
+}
+
+.quickdirt-text{
+  font-family: 'Indie Flower', cursive;
+  font-size: 16px;
+  width: 70%;
+  text-align: left;
+}
+
+.prescrips-title{
+  font-family: 'Pangolin', cursive;
+  font-size: 38px;
+  text-align: center;
+  color: #c62100;
+}
+
+.prescrips-text{
+  font-family: 'Pangolin', cursive;
+  font-size: 18px;
+  width: 60%;
+  text-align: center;
+  color: #c62100;
 }
 
 
@@ -110,9 +140,13 @@ body{
         </button>
         <h1 class="modal-title" id=ModalLabel<%= @i %>><%= review.title %></h1>
       </div>
+      <div class="quickdirt-title">The quick and dirty:</div>
+        <div class="quickdirt-text"><%= simple_format review.quickdirt %></div>
       <div class="modal-body" align="left">
         <%= simple_format review.body %>
       </div>
+      <p class="prescrips-title">Prescriptions</p>
+      <div class="prescrips-text"><%= simple_format review.prescription %></div>
       <div class="modal-footer">
         <button type="button" class="btn btn-dark" data-dismiss="modal">
           <img src="/logo_close.png" height="70" align="center">

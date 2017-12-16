@@ -25,16 +25,31 @@
     <%= form.label :title %><br>
     <%= form.text_field :title, :size=>"50x1" %>
   </p>
+
+  <p>
+    <%= form.label :release %><br>
+    <%= form.text_field :release, :size=>"50x1" %>
+  </p>
+
+  <p>
+    <%= form.label :quickdirt%><br>
+    <%= form.text_area :quickdirt, :size=>"100x8"%>
+  </p>
  
   <p>
     <%= form.label :body%><br>
     <%= form.text_area :body, :size=>"100x20"%>
   </p>
 
-  <div>
+  <p>
+    <%= form.label :prescription%><br>
+    <%= form.text_area :prescription, :size=>"100x10"%>
+  </p>
+
+  <p>
       <%= form.label :image %>
-      <%= form.file_field :image, class: 'form-control' %>
-    </div>
+      <%= form.file_field :image, :size=>"30x5" %>
+  </p>
 <br>
  
   <p>

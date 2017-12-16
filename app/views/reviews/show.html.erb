@@ -15,9 +15,22 @@ padding-bottom: 15px;
 </style>
 
 <h1><%= @review.title %></h1>
+<text style="font-family: 'Raleway', sans-serif; font-size:22px">release date: <%= @review.release %>
+</text><br><br>
 
-<body>
+<div>
+<text style="font-family: 'Raleway', sans-serif; font-size:30px">The Quick and Dirty</text><br>
+<%= simple_format(@review.quickdirt, class:"mymofucka")%>
+</div>
+
+<div>
+<text style="font-family: 'Raleway', sans-serif; font-size:30px">Review Body:</text><br>
 	<%= simple_format(@review.body, class:"mymofucka")%>
+</div>
+
+<h1 font-family: 'Pangolin', cursive;">Prescriptions</h1>
+<body>
+  <%= simple_format(@review.prescription, class:"mymofucka")%>
 </body>
 
 

@@ -1,3 +1,10 @@
+<style>
+
+div {
+	padding-top: 15px;
+}
+
+</style>
 
 <blockquote margin: 10px;>
 <h1>New Movieeee Review.</h1>
@@ -10,13 +17,28 @@
 	</div>
 
 	<div>
+		<%= form.label :release %><br>
+		<%= form.text_field :release, :size=> "50x1" %>
+	</div>
+
+	<div>
+    <%= form.label :quickdirt%><br>
+    <%= form.text_area :quickdirt, :size=>"100x10"%>
+ 	</div>
+
+	<div>
 		<%= form.label :body %><br>
 		<%= form.text_area :body, :size=>"100x20" %>
 	</div>
-	
+		<%= form.label :prescription %><br>
+		<%= form.text_area :prescription, :size=>"100x10" %>	
+	<div>
+		<
+	</div>
+
 	<div>
     	<%= form.label :image %>
-    	<%= form.file_field :image, class: 'form-control' %>
+    	<%= form.file_field :image, :size=>"30X5" %>
   	</div>
 <br>
 	<div>
