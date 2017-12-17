@@ -22,8 +22,9 @@
   <% end %>
  
   <p>
-    <%= form.label :title %><br>
-    <%= form.text_field :title, :size=>"50x1" %>
+    <%= form.label :title %> <tr><br>
+    <%= form.text_field :title, :size=>"50x1" %> 
+    <%= form.label :score %>: <%= form.text_field :score, :size=>"5x1" %> RT: <%= form.text_field :scoreRT, :size=> "5x1" %>
   </p>
 
   <p>

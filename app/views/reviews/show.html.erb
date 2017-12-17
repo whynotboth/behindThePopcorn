@@ -19,6 +19,12 @@ padding-bottom: 15px;
 </text><br><br>
 
 <div>
+<text style="font-family: 'Raleway', sans-serif; font-size:22px">
+  Our score/RT score: <%= @review.score %>/<%= @review.scoreRT %>
+</text>
+</div>
+
+<div>
 <text style="font-family: 'Raleway', sans-serif; font-size:30px">The Quick and Dirty</text><br>
 <%= simple_format(@review.quickdirt, class:"mymofucka")%>
 </div>

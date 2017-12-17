@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171215213912) do
+ActiveRecord::Schema.define(version: 20171216170042) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,8 @@ ActiveRecord::Schema.define(version: 20171215213912) do
     t.text "prescription"
     t.text "quickdirt"
     t.date "release"
+    t.integer "score"
+    t.integer "scoreRT"
   end
 
 end
