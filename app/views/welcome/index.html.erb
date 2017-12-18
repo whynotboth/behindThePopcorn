@@ -111,10 +111,12 @@ body{
 
 <div class="container-fluid" align="center">
 
+<!-- Simple function used to populate the webpage with modals for each review -->
   <% @i = 0 %>
   <% @reviews.each do |review| %>
   <% @i = @i + 1 %>
-<!-- Button trigger modal -->
+
+  <!-- Button trigger modal -->
 <div class="container" style="width: 25%; float:left" >
 <button type="button" class="btn" style="background-color:transparent" data-toggle="modal" data-target=#exampleModal<%= @i %>>
   <div class="container" style="width:100%" id=<%= review.title %>>
@@ -125,10 +127,9 @@ body{
 </div>
 </button>
 </div>
+  <!-- End button trigger modal -->
 
-<!-- /Button trigger modal -->
-
-<!-- Modal -->
+  <!-- Modal -->
 <div class="modal fade" id=exampleModal<%= @i %> tabindex="-1" role="dialog" aria-labelledby=exampleModalLabel<%= @i %> aria-hidden="true">
   <div class="modal-dialog" role="document" style="width: 80%">
     <div class="modal-content">
@@ -142,7 +143,31 @@ body{
               <div class="quickdirt-text"><%= simple_format review.quickdirt %></div>
 
 
+  <!--Progress bars used to display scores -->
 
+    <!--Rotten Tomatoes Score -->
+    <div id="score">
+    <text style="font-family: 'Pangolin', cursive; text-align:center;">Rotten Tomatoes</text>
+      <div class="progress" style="height: 5px; width:50%">
+        <div class="progress-bar progress-bar-warning progress-bar-striped" style="width: <%=review.scoreRT%>%;" aria-valuenow="<%=review.scoreRT%>" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+    </div>
+    <!-- Our Score -->
+    <div id="score">
+    <text style="font-family: 'Pangolin', cursive; text-align:center;">Behind the Popcorn</text>
+      <div class="progress" style="width:50%;">
+        <div class="progress-bar progress-bar-danger progress-bar-striped active" role="progressbar" style="width: <%=review.score%>%;" aria-valuenow="<%=review.score%>" aria-valuemin="0" aria-valuemax="100">
+        <%=review.score%>
+        </div>
+      </div>
+    </div>
+
+    <!-- if no score has been uploaded, then no progress bars should be displayed -->
+    <!-- add script here to handle such a situation -->
+    
+  <!-- End progress bars -->
+
+  <!-- Modal Body -->
       <div class="modal-body" align="left">
         <%= simple_format review.body %>
       </div>
@@ -156,7 +181,8 @@ body{
     </div>
   </div>
 </div>
-<!-- /Modal -->
+  <!-- End Modal -->
   <% end %>
   <% @i = 0 %>
 </div>
+<!-- End of review population function -->
