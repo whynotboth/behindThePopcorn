@@ -1,3 +1,7 @@
+<!DOCTYPE html>
+<html>
+<body>
+
 <style>
 body{
 	background-color: black;
@@ -91,24 +95,21 @@ body{
   text-align: center;
   color: #c62100;
 }
-
-
-
 </style>
 
 
-  <div class="container" style="width:100%; padding-top: 15px; padding-left:70px">
+<!-- Logo and about phrase -->
+<div class="container" style="width:100%; padding-top: 15px; padding-left:70px">
     <img src="/POPCORN2.png" height="120"><br>
     <p class="navbar-text">
       straight up movie reviews by Jacob Mello
     </p>
   </div>
-</nav>
-
-
 <br>
 <br>
+<!-- End of logo area -->
 
+<!-- Set-up of the review layout -->
 <div class="container-fluid" align="center">
 
 <!-- Simple function used to populate the webpage with modals for each review -->
@@ -122,7 +123,9 @@ body{
   <div class="container" style="width:100%" id=<%= review.title %>>
   <img src=<%= review.image.url %> alt=<%=review.title %> height="400" class="image">
     <div class="overlay">
-    <div class="text" id=<%= review.title %>><%= review.title %></div>
+    <div class="text" id=<%= review.title %>><%= review.title %><br>
+      <p style="font-family: 'Anton', sans-serif; font-size: 50px"><%= review.score %>%</p>
+    </div>
   </div>
 </div>
 </button>
@@ -164,7 +167,7 @@ body{
 
     <!-- if no score has been uploaded, then no progress bars should be displayed -->
     <!-- add script here to handle such a situation -->
-    
+
   <!-- End progress bars -->
 
   <!-- Modal Body -->
@@ -184,5 +187,9 @@ body{
   <!-- End Modal -->
   <% end %>
   <% @i = 0 %>
-</div>
 <!-- End of review population function -->
+</div>
+<!-- Close of entire layout container -->
+
+</body>
+</html>

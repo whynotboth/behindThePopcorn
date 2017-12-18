@@ -15,6 +15,10 @@ table, th, td, h1 {
 			Title
 		</th>
 		<th>
+			Score
+			<colspan= "2">		
+		</th>
+		<th>
 			Options
 			<colspan= "2">		
 		</th>
@@ -23,6 +27,7 @@ table, th, td, h1 {
 	<% @reviews.each do |review| %>
 		<tr>
 			<td><%= review.title %></td>
+			<td id="score"><%=review.score%></td>
 			<td><%= link_to 'Show', review_path(review) %></td>
 			<td><%= link_to 'Edit', edit_review_path(review) %></td>
 		</tr>
