@@ -44,7 +44,7 @@ padding-bottom: 15px;
 
     <div class="media-left">
       <!-- Renders image -->
-      <%= link_to image_tag(@review.image.url, class: 'media-object'), @review.image.url, target: '_blank' %>
+      <img src=<%= @review.image.url %> alt=<%= @review.title %> height="300px" class="image">
     </div>
     <div class="media-body">
       <h4 class="media-heading"><%= @review.title %></h4>

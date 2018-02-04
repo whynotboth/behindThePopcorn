@@ -6,13 +6,20 @@
 body{
   background-color: black;
   }
+
+h1{
+  padding-left: 200px;
+  font-family: 'Fjalla One', sans-serif;
+  font-size: 60px;
+  color: #666666;
+}
 .container {
   position: relative;
   width: 80%;
 }
 .image {
   display: block;
-  height: 400;
+  height: 300;
 }
 .overlay {
   position: absolute;
@@ -82,6 +89,81 @@ body{
   text-align: center;
   color: #c62100;
 }
+/* Add a black background color to the top navigation bar */
+* {box-sizing: border-box;}
+
+body {
+  margin: 0;
+  font-family: Arial;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #666666;
+}
+
+.topnav a {
+  float: left;
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #666666;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #397c2a;
+  color: #fefff9;
+}
+
+.topnav .search-container {
+  float: right;
+}
+
+.topnav input[type=text] {
+  padding: 6px;
+  margin-top: 8px;
+  font-size: 17px;
+  border: none;
+}
+
+.topnav .search-container button {
+  float: right;
+  padding: 6px 10px;
+  margin-top: 8px;
+  margin-right: 16px;
+  background: #666666;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
+
+.topnav .search-container button:hover {
+  background: #c10000;
+}
+
+@media screen and (max-width: 600px) {
+  .topnav .search-container {
+    float: none;
+  }
+  .topnav a, .topnav input[type=text], .topnav .search-container button {
+    float: none;
+    display: block;
+    text-align: left;
+    width: 100%;
+    margin: 0;
+    padding: 14px;
+  }
+  .topnav input[type=text] {
+    border: 1px solid #ccc;  
+  }
+}
 </style>
 
 
@@ -96,19 +178,40 @@ body{
 <br>
 <!-- End of logo area -->
 
+<!-- Search Area -->
+<div class="searchContainer" style="padding-left: 20px; padding-right: 20px">
+<div class="topnav">
+  <a class="active" href="#home">Recent 8</a>
+  <a href="allreviews">More Reviews</a>
+  <div class="search-container">
+    <form action="/#">
+      <input type="text" placeholder="Search coming soon!" name="search">
+      <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
+  </div>
+</div>
+</div>
+
+<br><br>
+
+<!-- Heading for the most recent 8 -->
+  <h1> THE RECENT 8 </h1>
+
 <!-- Set-up of the review layout -->
 <div class="container-fluid" align="center">
 
 <!-- Simple function used to populate the webpage with modals for each review -->
   <% @i = 0 %>
-  <% @reviews.each do |review| %>
+  <% @reviews[0..7].each do |review| %>
   <% @i = @i + 1 %>
 
+
   <!-- Button trigger modal -->
-<div class="container" style="width: 320px; height: 450px; float:left" >
+  <div style="display: inline-block;">
+<div class="container" style="width: 275px; height: 350px;" >
 <button type="button" class="btn" style="background-color:transparent" data-toggle="modal" data-target=#exampleModal<%= @i %>>
   <div class="container" style="width:100%" id=<%= review.title %>>
-  <img src=<%= review.image.url %> alt=<%=review.title %> height="400" class="image">
+  <img src=<%= review.image.url %> alt=<%=review.title %> height="300px" class="image">
     <div class="overlay">
     <div class="text" id=<%= review.title %>><%= review.title %><br>
       <p style="font-family: 'Anton', sans-serif; font-size: 50px"><%= review.score %>%</p>
@@ -117,6 +220,8 @@ body{
 </div>
 </button>
 </div>
+
+  </div>
   <!-- End button trigger modal -->
 
   <!-- Modal -->
