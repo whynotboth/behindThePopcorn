@@ -1,11 +1,51 @@
 <!DOCTYPE html>
 <html>
 <head>
-<style>
 
-table, th, td, h1 {
-	padding: 10px;
+<script src="jquery.js"></script>
+<script src="jquery.searchable.js"></script>
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script type="text/javascript">$(function () {
+    $( '#table' ).searchable({
+
+        striped: false,
+        oddRow: { 'background-color': 'green' },
+        evenRow: { 'background-color': 'black' },
+        searchType: 'fuzzy'
+    });
+    
+    $( '#searchable-container' ).searchable({
+        searchField: '#container-search',
+        selector: '.row',
+        childSelector: '.col-xs-4',
+        show: function( elem ) {
+            elem.slideDown(100);
+        },
+        hide: function( elem ) {
+            elem.slideUp( 100 );
+        }
+    })
+});</script>
+<script src="//rawgithub.com/stidges/jquery-searchable/master/dist/jquery.searchable-1.0.0.min.js"></script>
+
+<style>
+.borderless > thead > tr > th,
+.borderless > tbody > tr > th,
+.borderless > tfoot > tr > th,
+.borderless > thead > tr > td,
+.borderless > tbody > tr > td,
+.borderless > tfoot > tr > td {
+  border-top: none;
+}
+
+th, td, h1 {
+	padding: 20px;
+	border-bottom: 0px;
+	border-top: 0px;
 	}
+
 body{
   background-color: black;
   }
@@ -98,6 +138,8 @@ h1{
   text-align: center;
   color: #c62100;
 }
+
+
 /* Add a black background color to the top navigation bar */
 * {box-sizing: border-box;}
 
@@ -192,41 +234,40 @@ body {
 <div class="topnav">
   <a href="/">Recent 8</a>
   <a class="active" href="allreviews">More Reviews</a>
-  <div class="search-container">
-    <form action="/#">
-      <input type="text" placeholder="Search coming soon!" name="search">
-      <button type="submit"><i class="fa fa-search"></i></button>
-    </form>
-  </div>
 </div>
 </div>
 
 <br><br>
 <h1>All of 'em.</h1>
-<div class="tableContainer" style="margin: auto; width:50%">
 
-<table>
-	<tr>
-		<th class="text-title" style="text-align: center">
-			Title
-		</th>
-		<th class="text-title" style="text-align: center">
-			Score
-			<colspan= "2">		
-		</th>
-		<th class="text-title" style="text-align: center">
-			Release Date
-			<colspan= "2">		
-		</th>
-	</tr>
+<!-- Search Area -->
 
+
+    <div class="row">
+        <div class="col-lg-4 col-lg-offset-4">
+            <input type="search" id="search" value="" class="form-control" placeholder="Search Reviews">
+        </div>
+    </div>
+    <div class="row" style="padding-left: 10%; padding-right: 10%">
+        <div class="col-lg-12">
+            <table border ="0" class="table borderless" id="table" width="80%">
+                <thead>
+                    <tr>
+                        <th style="color: white; text-align: center">Title</th>
+                        <th style="color: white;text-align: center">Score</th>
+                        <th style="color: white;text-align: center">Release Date</th>
+                    </tr>
+                </thead>
+                <tbody>
 	<% @reviews.each do |review| %>
 		<tr>
-			<td class="text-title"><%= link_to review.title, allreview_path(review) %></td>
+			<td class="text-title" style="padding-left: 20%;"><%= link_to review.title, allreview_path(review) %></td>
 			<td id="score" class="text-title" style="text-align: center"><%=review.score%></td>
-			<td  class="text-title" style="padding-left: 20px"><%= review.release.to_formatted_s(:long) %></td>
+			<td  class="text-title" style="text-align: center"><%= review.release.to_formatted_s(:long) %></td>
 		</tr>
 	<% end %>
-</table>
+                </tbody>
+            </table>
+        </div>
+    </div>
 <br><br>
-</div>
