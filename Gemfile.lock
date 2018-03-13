@@ -214,6 +214,7 @@ DEPENDENCIES
   paperclip (~> 5.0.0)
   pg
   puma (~> 3.7)
+  rack
   rails (~> 5.1.4)
   sass-rails (~> 5.0)
   selenium-webdriver
