@@ -1,33 +1,5 @@
 <!DOCTYPE html>
 <html>
-<head>
-
-<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<script type="text/javascript">$(function () {
-    $( '#table' ).searchable({
-
-        striped: false,
-        oddRow: { 'background-color': 'green' },
-        evenRow: { 'background-color': 'black' },
-        searchType: 'fuzzy'
-    });
-    
-    $( '#searchable-container' ).searchable({
-        searchField: '#container-search',
-        selector: '.row',
-        childSelector: '.col-xs-4',
-        show: function( elem ) {
-            elem.slideDown(100);
-        },
-        hide: function( elem ) {
-            elem.slideUp( 100 );
-        }
-    })
-});</script>
-<script src="//rawgithub.com/stidges/jquery-searchable/master/dist/jquery.searchable-1.0.0.min.js"></script>
-</head>
 <body>
 
 <style>
@@ -117,8 +89,6 @@ h1{
   text-align: center;
   color: #c62100;
 }
-
-
 /* Add a black background color to the top navigation bar */
 * {box-sizing: border-box;}
 
@@ -211,12 +181,16 @@ body {
 <!-- Search Area -->
 <div class="searchContainer" style="padding-left: 20px; padding-right: 20px">
 <div class="topnav">
-  <a class="active" href="/">Recent 8</a>
+  <a class="active" href="#home">Recent 8</a>
   <a href="allreviews">More Reviews</a>
+  <div class="search-container">
+    <form action="/#">
+      <input type="text" placeholder="Search coming soon!" name="search">
+      <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
+  </div>
 </div>
 </div>
-<br><br>
-
 
 <br><br>
 
@@ -235,7 +209,7 @@ body {
   <!-- Button trigger modal -->
   <div style="display: inline-block;">
 <div class="container" style="width: 275px; height: 350px;" >
-<button type="button" class="btn" style="background-color:transparent" onclick="location.href = '<%= allreview_path(review) %>'";>
+<button type="button" class="btn" style="background-color:transparent" data-toggle="modal" data-target=#exampleModal<%= @i %>>
   <div class="container" style="width:100%" id=<%= review.title %>>
   <img src=<%= review.image.url %> alt=<%=review.title %> height="300px" class="image">
     <div class="overlay">
@@ -246,12 +220,68 @@ body {
 </div>
 </button>
 </div>
+
   </div>
   <!-- End button trigger modal -->
- <%end%>
+
+  <!-- Modal -->
+<div class="modal fade" id=exampleModal<%= @i %> tabindex="-1" role="dialog" aria-labelledby=exampleModalLabel<%= @i %> aria-hidden="true">
+  <div class="modal-dialog" role="document" style="width: 80%">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" style="float: top" data-dismiss="modal" aria-label="Close">
+           <span aria-hidden="true">&times;</span>
+        </button>
+        <h1 class="modal-title" id=ModalLabel<%= @i %>><%= review.title %></h1>
+      </div>
+      <div class="quickdirt-title">The quick and dirty:</div>
+              <div class="quickdirt-text"><%= simple_format review.quickdirt %></div>
+
+
+  <!--Progress bars used to display scores -->
+
+    <!--Rotten Tomatoes Score -->
+    <div id="score">
+    <text style="font-family: 'Pangolin', cursive; text-align:center;">Rotten Tomatoes</text>
+      <div class="progress" style="height: 5px; width:50%">
+        <div class="progress-bar progress-bar-warning progress-bar-striped" style="width: <%=review.scoreRT%>%;" aria-valuenow="<%=review.scoreRT%>" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+    </div>
+    <!-- Our Score -->
+    <div id="score">
+    <text style="font-family: 'Pangolin', cursive; text-align:center;">Behind the Popcorn</text>
+      <div class="progress" style="width:50%;">
+        <div class="progress-bar progress-bar-danger progress-bar-striped active" role="progressbar" style="width: <%=review.score%>%;" aria-valuenow="<%=review.score%>" aria-valuemin="0" aria-valuemax="100">
+        <%=review.score%>
+        </div>
+      </div>
+    </div>
+
+    <!-- if no score has been uploaded, then no progress bars should be displayed -->
+    <!-- add script here to handle such a situation -->
+
+  <!-- End progress bars -->
+
+  <!-- Modal Body -->
+      <div class="modal-body" align="left">
+        <%= simple_format review.body %>
+      </div>
+      <p class="prescrips-title">Prescriptions</p>
+      <div class="prescrips-text"><%= simple_format review.prescription %></div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-dark" data-dismiss="modal">
+          <img src="/logo_close.png" height="70" align="center">
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+  <!-- End Modal -->
+  <% end %>
+  <% @i = 0 %>
+<!-- End of review population function -->
 </div>
 <!-- Close of entire layout container -->
-
 
 </body>
 </html>

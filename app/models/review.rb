@@ -10,6 +10,4 @@ class Review < ApplicationRecord
     											:thumb => "-quality 75 -strip" }
 
   default_scope { order(release: :desc) }
-
-  
 end

@@ -2,7 +2,6 @@ class AllreviewsController < ApplicationController
 
 	def index
 		@reviews = Review.all
-		
 	end
 
 	def show
@@ -12,5 +11,4 @@ class AllreviewsController < ApplicationController
 	def edit
 		@review = Review.find(params[:id])
 	end
-
 end
