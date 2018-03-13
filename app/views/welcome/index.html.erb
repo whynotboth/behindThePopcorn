@@ -1,10 +1,257 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <script src="jquery.js"></script>
+<script src="jquery.searchable.js"></script>
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script type="text/javascript">$(function () {
+    $( '#table' ).searchable({
+
+        striped: false,
+        oddRow: { 'background-color': 'green' },
+        evenRow: { 'background-color': 'black' },
+        searchType: 'fuzzy'
+    });
+    
+    $( '#searchable-container' ).searchable({
+        searchField: '#container-search',
+        selector: '.row',
+        childSelector: '.col-xs-4',
+        show: function( elem ) {
+            elem.slideDown(100);
+        },
+        hide: function( elem ) {
+            elem.slideUp( 100 );
+        }
+    })
+});</script>
+<script src="//rawgithub.com/stidges/jquery-searchable/master/dist/jquery.searchable-1.0.0.min.js"></script>
 
 <body>
 
-HELLO
+<style>
+body{
+  background-color: black;
+  }
+
+h1{
+  padding-left: 200px;
+  font-family: 'Fjalla One', sans-serif;
+  font-size: 60px;
+  color: #666666;
+}
+.container {
+  position: relative;
+  width: 80%;
+}
+.image {
+  display: block;
+  height: 300;
+}
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 400;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: black;
+}
+.container:hover .overlay {
+  opacity: .85;
+}
+.text {
+  color: white;
+  font-size: 20px;
+  max-width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
+.modal-body {
+  display: block;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 18px;
+  line-height: 1.5;
+  width: 90%;
+}
+.modal-title {
+  display: block;
+  font-family: 'Anton', sans-serif;
+  font-size: 32px;
+}
+.navbar-text{
+  padding-left: 20px;
+  font-family: 'Fjalla One', sans-serif;
+  font-size: 24px;
+  color: #666666;
+}
+.quickdirt-title{
+  font-family: 'Indie Flower', cursive;
+  font-size: 26px;
+  width: 80%;
+  padding-top: 15px;
+  text-align: left;
+}
+.quickdirt-text{
+  font-family: 'Indie Flower', cursive;
+  font-size: 16px;
+  width: 70%;
+  text-align: left;
+}
+.prescrips-title{
+  font-family: 'Pangolin', cursive;
+  font-size: 38px;
+  text-align: center;
+  color: #c62100;
+}
+.prescrips-text{
+  font-family: 'Pangolin', cursive;
+  font-size: 18px;
+  width: 60%;
+  text-align: center;
+  color: #c62100;
+}
+
+
+/* Add a black background color to the top navigation bar */
+* {box-sizing: border-box;}
+
+body {
+  margin: 0;
+  font-family: Arial;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #666666;
+}
+
+.topnav a {
+  float: left;
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #666666;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #397c2a;
+  color: #fefff9;
+}
+
+.topnav .search-container {
+  float: right;
+}
+
+.topnav input[type=text] {
+  padding: 6px;
+  margin-top: 8px;
+  font-size: 17px;
+  border: none;
+}
+
+.topnav .search-container button {
+  float: right;
+  padding: 6px 10px;
+  margin-top: 8px;
+  margin-right: 16px;
+  background: #666666;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
+
+.topnav .search-container button:hover {
+  background: #c10000;
+}
+
+@media screen and (max-width: 600px) {
+  .topnav .search-container {
+    float: none;
+  }
+  .topnav a, .topnav input[type=text], .topnav .search-container button {
+    float: none;
+    display: block;
+    text-align: left;
+    width: 100%;
+    margin: 0;
+    padding: 14px;
+  }
+  .topnav input[type=text] {
+    border: 1px solid #ccc;  
+  }
+}
+</style>
+
+
+<!-- Logo and about phrase -->
+<div class="container" style="width:100%; padding-top: 15px; padding-left:70px">
+    <img src="/btpLogo2.png" height="120"><br>
+    <p class="navbar-text">
+      straight up movie reviews by Jacob Mello
+    </p>
+  </div>
+<br>
+<br>
+<!-- End of logo area -->
+
+<!-- Search Area -->
+<div class="searchContainer" style="padding-left: 20px; padding-right: 20px">
+<div class="topnav">
+  <a class="active" href="/">Recent 8</a>
+  <a href="allreviews">More Reviews</a>
+</div>
+</div>
+<br><br>
+
+
+<br><br>
+
+<!-- Heading for the most recent 8 -->
+  <h1> THE RECENT 8 </h1>
+
+<!-- Set-up of the review layout -->
+<div class="container-fluid" align="center">
+
+<!-- Simple function used to populate the webpage with modals for each review -->
+  <% @i = 0 %>
+  <% @reviews[0..7].each do |review| %>
+  <% @i = @i + 1 %>
+
+
+  <!-- Button trigger modal -->
+  <div style="display: inline-block;">
+<div class="container" style="width: 275px; height: 350px;" >
+<button type="button" class="btn" style="background-color:transparent" onclick="location.href = '<%= allreview_path(review) %>'";>
+  <div class="container" style="width:100%" id=<%= review.title %>>
+  <img src=<%= review.image.url %> alt=<%=review.title %> height="300px" class="image">
+    <div class="overlay">
+    <div class="text" id=<%= review.title %>><%= review.title %><br>
+      <p style="font-family: 'Anton', sans-serif; font-size: 50px"><%= review.score %>%</p>
+    </div>
+  </div>
+</div>
+</button>
+</div>
+  </div>
+  <!-- End button trigger modal -->
+ <%end%>
+</div>
+<!-- Close of entire layout container -->
 
 
 </body>
