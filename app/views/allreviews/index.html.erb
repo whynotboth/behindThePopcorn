@@ -188,39 +188,34 @@ body {
 <!-- End of logo area -->
 
 <!-- Search Area -->
-<div class="searchContainer" style="padding-left: 20px; padding-right: 20px">
-<div class="topnav">
-  <a href="/">Recent 8</a>
-  <a class="active" href="allreviews">More Reviews</a>
-</div>
-</div>
 
-<br><br>
-<h1>All of 'em.</h1>
-<div class="tableContainer" style="margin: auto; width:50%">
 
-<table>
-	<tr>
-		<th class="text-title" style="text-align: center">
-			Title
-		</th>
-		<th class="text-title" style="text-align: center">
-			Score
-			<colspan= "2">		
-		</th>
-		<th class="text-title" style="text-align: center">
-			Release Date
-			<colspan= "2">		
-		</th>
-	</tr>
-
-	<% @reviews.each do |review| %>
-		<tr>
-			<td class="text-title"><%= link_to review.title, allreview_path(review) %></td>
-			<td id="score" class="text-title" style="text-align: center"><%=review.score%></td>
-			<td  class="text-title" style="padding-left: 20px"><%= review.release.to_formatted_s(:long) %></td>
-		</tr>
-	<% end %>
-</table>
+    <div class="row">
+        <div class="col-lg-4 col-lg-offset-4">
+            <input type="search" id="search" value="" class="form-control" placeholder="Search Reviews">
+        </div>
+    </div>
+    <div class="row" style="padding-left: 10%; padding-right: 10%">
+        <div class="col-lg-12">
+            <table border ="0" class="table borderless" id="table" width="80%">
+                <thead>
+                    <tr>
+                        <th style="color: white; text-align: center">Title</th>
+                        <th style="color: white;text-align: center">Score</th>
+                        <th style="color: white;text-align: center">Release Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+  <% @reviews.each do |review| %>
+    <tr>
+      <td class="text-title" style="padding-left: 20%;"><%= link_to review.title, allreview_path(review) %></td>
+      <td id="score" class="text-title" style="text-align: center"><%=review.score%></td>
+      <td  class="text-title" style="text-align: center"><%= review.release.to_formatted_s(:long) %></td>
+    </tr>
+  <% end %>
+                </tbody>
+            </table>
+        </div>
+    </div>
 <br><br>
 </div>
